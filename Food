@@ -15,14 +15,14 @@ import java.util.Random;
  * If you edit this, please comment what you have changed and re-upload it please.
  * ----------------------------------GROUP6----------------------------------
  */
-public class FOOD {
+public class Food {
 	
 	Random random = new Random();
 	int value;
 	int xpos;
 	int ypos;
 	boolean ghost;
-	public FOOD(int x_pos, int y_pos) 
+	public Food(int x_pos, int y_pos) 
 	{
 		ghost = true;
 		int weight = random.nextInt(100);
