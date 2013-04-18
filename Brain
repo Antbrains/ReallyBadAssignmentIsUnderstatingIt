@@ -6,14 +6,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class BRAIN 
+public class Brain 
 {
 	int scentLimit = 6;
 	BufferedReader input;
 	ArrayList<Parser> states = new ArrayList<Parser>();
 	ArrayList<Brain> brainArray = new ArrayList<Brain>();
 	
-	public BRAIN (String fileName, int team) throws IOException
+	public Brain (String fileName, int team) throws IOException
 	{
 		brainArray.add(team, this); 
 		input = new BufferedReader(new FileReader(fileName));
