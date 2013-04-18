@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * If you edit this, please comment what you have changed and re-upload it please.
  * ----------------------------------GROUP6----------------------------------
  */
-public class HIVE 
+public class Hive 
 {
-	private BRAIN hiveMind;
+	private Brain hiveMind;
 	int antsInside;
 	int hiveLimit;
 	private static int totalFood ;
@@ -23,7 +23,7 @@ public class HIVE
 	boolean ghost;
 	int team; 
 	private static ArrayList<ANT> antsInHiveArray = new ArrayList<ANT>();
-	public HIVE (int x_coord, int y_coord, int givenTeam, BRAIN givenBrain)
+	public Hive hive(int x_coord, int y_coord, int givenTeam, Brain givenBrain)
 	{
 		this.hiveMind = givenBrain;
 		this.xLoc = x_coord;
@@ -39,20 +39,20 @@ public class HIVE
 	/*This method will be called by the GUI once the teams(1-4) hives are made, using a...
 	 * ...loop depending on the size of the teamCount variable.
 	 */
-	private HIVE fillHive()
+	private Hive fillHive()
 	{
 		hiveLimit = 200;
 		for (int i = 0; i < hiveLimit; i++)
 		{
-			ANT ant = new ANT(i+1,this.team,0);
+			Ant ant = new Ant(i+1,this.team,0);
 			ant.xLoc = this.xLoc;
 			ant.yLoc = this.yLoc;
-			HIVE.getAntsInHiveArray().add(i, ant);
+			Hive.getAntsInHiveArray().add(i, ant);
 		}
 		return this;
 	}
 	
-	public static void acceptANT(ANT antGiven, int i, int foodGiven)
+	public static void acceptANT(Ant antGiven, int i, int foodGiven)
 	{
 		getAntsInHiveArray().add(i, antGiven);
 		takeFood(i, foodGiven);
@@ -66,7 +66,7 @@ public class HIVE
 		else 
 		{
 			ANT ant = getAntsInHiveArray().get(1);
-			WORLD.takeAntFromHive(ant, ant.antID);
+			main.takeAntFromHive(ant, ant.antID);
 		}
 		
 	}
@@ -75,13 +75,37 @@ public class HIVE
 		int fwa = foodValue;
 		addFood(fwa);
 	}
-
+	public ANT getThisAnt(int x, int y)
+	{
+		int wantedXpos = x;
+		int wantedYpos = y;
+		int currentYpos;
+		int currentXpos;
+	
+		for(int i = 0; i < antsInHiveArray.size(); i++)
+		{
+			currentXpos = antsInHiveArray.get(i).xLoc;
+			if (currentXpos == wantedXpos)
+			{
+				i = 0;
+				do{
+					currentYpos = antsInHiveArray.get(i).yLoc;
+					i++;
+				}while(currentYpos != wantedYpos);
+			return antsInHiveArray.get(i);
+			}
+			else
+			{
+				throw new Exception("Invalid location provided.");
+			}	
+		}
+	}
 	public static ArrayList<ANT> getAntsInHiveArray() {
 		return antsInHiveArray;
 	}
 
 	public static void setAntsInHiveArray(ArrayList<ANT> antsInHiveArray) {
-		HIVE.antsInHiveArray = antsInHiveArray;
+		Hive.antsInHiveArray = antsInHiveArray;
 	}
 
 	public static int getTotalFood() {
@@ -89,7 +113,7 @@ public class HIVE
 	}
 
 	public static void addFood(int food) {
-		HIVE.totalFood =+ totalFood;
+		Hive.totalFood =+ totalFood;
 	}
 
 
