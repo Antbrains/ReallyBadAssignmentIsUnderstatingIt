@@ -24,11 +24,12 @@ public class ANT
 	boolean holdFood;
 	boolean antAlive;
 	boolean surrounded;
-	int currentState;
+	Parser currentState;
 	boolean ghost = true;
-	FOOD foodValue;
+	Food foodValue;
+	boolean resting = true;
 	
-	public ANT (int passedId, int passedColour, int currentState)
+	public ANT (int passedId, int passedColour, Parser currentState)
 	{
 		this.antID = passedId;
 		this.teamColour = passedColour;
@@ -56,139 +57,86 @@ public class ANT
 		return antID;
 	}
 
-
-
 	public void setAntID(int antID) {
 		this.antID = antID;
 	}
-
-
 
 	public int getTeamColour() {
 		return teamColour;
 	}
 
-
-
 	public void setTeamColour(int teamColour) {
 		this.teamColour = teamColour;
 	}
-
-
 
 	public int getSteps() {
 		return steps;
 	}
 
-
-
 	public void setSteps(int steps) {
 		this.steps = steps;
 	}
-
-
-
 	public int getxLoc() {
 		return xLoc;
 	}
 
-
-
 	public void setxLoc(int xLoc) {
 		this.xLoc = xLoc;
 	}
-
-
-
-	public int getyLoc() {
+	public int getyLoc() 
+	{
 		return yLoc;
 	}
-
-
+	
 
 	public void setyLoc(int yLoc) {
 		this.yLoc = yLoc;
 	}
 
-
-
 	public boolean isHoldFood() {
 		return holdFood;
 	}
-
-
 
 	public void setHoldFood(boolean holdFood) {
 		this.holdFood = holdFood;
 	}
 
-
-
 	public boolean isAntAlive() {
 		return antAlive;
 	}
-
-
 
 	public void setAntAlive(boolean antAlive) {
 		this.antAlive = antAlive;
 	}
 
-
-
-	public int getCurrentState() {
+	public Parser getCurrentState() {
 		return currentState;
 	}
-
-
-
-	public void setCurrentState(int currentState) {
-		this.currentState = currentState;
-	}
-
-
 
 	public boolean isGhost() {
 		return ghost;
 	}
-
-
-
 	public void setGhost(boolean ghost) {
 		this.ghost = ghost;
 	}
-
-
-
-	public FOOD getFoodValue() {
-		return foodValue;
+	public Food getFoodValue() {
+		return this.foodValue;
 	}
-
-
-
-	public void setFoodValue(FOOD foodValue) {
+	public void setFoodValue(Food foodValue) {
 		this.foodValue = foodValue;
 	}
-
-
-
 	public void setSurrounded(boolean surrounded) {
 		this.surrounded = surrounded;
 	}
-
-
-
 	private void move(int distance, Direction dir)
 	{
 		setGhost(false);
 		//moves ahead by distance
-	}
-	
+	}	
 	private void turn(Turn whatWay)
 	{
 		//if left, turn to face cell leftAhead etc.
 	}
-	
 	private void findFood()
 	{
 
@@ -202,7 +150,7 @@ public class ANT
 	
 	private void death()
 	{
-		ArrayList<ANT> new1 = WORLD.getAntsInWorldArray();
+		ArrayList<ANT> new1 = main.getAntsInWorldArray();
 		//int a = new1.size();
 		if(surrounded)
 		{
@@ -212,7 +160,7 @@ public class ANT
 				{
 					new1.remove(i);
 					setAntAlive(false);
-					WORLD.setAntsInWorldArray(new1);
+					main.setAntsInWorldArray(new1);
 				}
 			}
 		}
@@ -258,16 +206,14 @@ public class ANT
 	private void enterHive()
 	{
 		this.ghost = true;
-		//HIVE.takeFood(this.antID, this.foodValue.value);
-		HIVE.acceptANT(this, this.antID, this.foodValue.value);	
+		Hive.acceptANT(this, this.antID, this.foodValue.value);	
 	}
 	private void leaveHive()
 	{
 		this.ghost = false;
 	}
-	private int setPos(int xGiven, int yGiven)
-	{
-		
+	private void setPos(int xGiven, int yGiven)
+	{	
 		this.xLoc = xGiven;
 		this.yLoc = yGiven;
 	}
