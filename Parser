@@ -13,9 +13,9 @@ public class Parser
 	private Senses senses;
 	private Scents scent;
 	
-	public Parser(String file) throws Exception
+	public Parser(String passedFromBrain) throws Exception
 	{
-		String stateList = file;
+		String stateList = passedFromBrain;
 		state1 = -1;
 		state2 = -1;
 		senses = null;
