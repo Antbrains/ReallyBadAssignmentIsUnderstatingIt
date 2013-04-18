@@ -1,14 +1,14 @@
 package ANTGAME;
 
-public class ROCKS {
+public class Rocks {
 	int xpos;
 	int ypos;
 	boolean ghost;
-
-	public ROCKS(int xpos, int ypos) {
+	public Rocks(int xpos, int ypos) {
 		this.xpos = xpos;
 		this.ypos = ypos;
 		ghost = false;
 	}
+	
 
 }
