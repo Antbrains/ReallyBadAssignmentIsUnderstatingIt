@@ -48,7 +48,9 @@ public class Hive
 			ant.xLoc = this.xLoc;
 			ant.yLoc = this.yLoc;
 			Hive.getAntsInHiveArray().add(i, ant);
+			System.out.println(i + " Ants have been added to hive " + this.givenTeam);
 		}
+		System.out.println(i + " Ants have been added in total to hive " + this.givenTeam);
 	}
 	
 	public static void acceptANT(Ant antGiven, int i, int foodGiven)
