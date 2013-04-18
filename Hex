@@ -12,8 +12,8 @@ package ANTGAME;
  * If you edit this, please comment what you have changed and re-upload it please.
  * ----------------------------------GROUP6----------------------------------
  */
-public class HEX {
-  int xpos;
+public class Hex {
+	int xpos;
 	int ypos;
 	boolean food;
 	boolean ant;
@@ -23,7 +23,7 @@ public class HEX {
 	boolean rock;
 	ANT antOnMe;
 	
-	public HEX (int x_pos, int y_pos, boolean foodGiven, boolean antGiven, boolean scentGiven,
+	public Hex (int x_pos, int y_pos, boolean foodGiven, boolean antGiven, boolean scentGiven,
 			boolean ghostGiven, int hiveGiven, boolean rockGiven)
 	{
 		this.xpos = x_pos;
