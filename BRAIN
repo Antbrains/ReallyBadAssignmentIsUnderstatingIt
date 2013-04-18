@@ -1,17 +1,31 @@
 package ANTGAME;
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class BRAIN 
 {
-    int scentLimit = 6;
-	String[] scentArray = new String[scentLimit];
-	public BRAIN(String brainName, String fileName, int team)
+	int scentLimit = 6;
+	BufferedReader input;
+	ArrayList<Parser> states = new ArrayList<Parser>();
+	ArrayList<Brain> brainArray = new ArrayList<Brain>();
+	
+	public BRAIN (String fileName, int team) throws IOException
 	{
-	  ArrayList<BRAIN> brainArray = new ArrayList<BRAIN>();
-	  brainArray.add(team, this);
-	}
+		brainArray.add(team, this); 
+		input = new BufferedReader(new FileReader(fileName));
+		String currentLine = input.readLine();
+		while(currentLine != null)
+		{
+			states.add(new Parser(currentLine));
+		}
+}
+
+	
+	
 	private void states()
 	{
 		
@@ -19,15 +33,7 @@ public class BRAIN
 
 	private void mark(String givenScent)
 	{
-		String scent = givenScent;
-		for (int i = 0; i < scentLimit; i++)
-		{
-			if (scent == scentArray[i])
-			{
-				ANT.mark(i);
-			}
-		}
-		states();
+
 	
 	}
 
@@ -56,7 +62,7 @@ public class BRAIN
 	
 	}
 	
-	private void turn(TURN whichWay)
+	private void turn(Turn whichWay)
 	{
 		
 	}
