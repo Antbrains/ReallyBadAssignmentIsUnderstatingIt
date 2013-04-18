@@ -23,7 +23,7 @@ public class HIVE
 	boolean ghost;
 	int team; 
 	private static ArrayList<ANT> antsInHiveArray = new ArrayList<ANT>();
-	public HIVE hive(int x_coord, int y_coord, int givenTeam, BRAIN givenBrain)
+	public HIVE (int x_coord, int y_coord, int givenTeam, BRAIN givenBrain)
 	{
 		this.hiveMind = givenBrain;
 		this.xLoc = x_coord;
