@@ -1,0 +1,167 @@
+package ANTGAME;
+import java.util.ArrayList;
+import java.util.Random;
+/* ----------------------------------GROUP6----------------------------------
+ * Author M.K
+ * Monday 15th April 2013
+ * 
+ * This class creates the WORLD object, it has methods to fill the hexArray, with up to 4 players.
+ * 
+ * This class is called by the GUI class to create a hive, given its location...
+ * ...by the GUI class. It then returns a HIVE object to be used. 
+ * 
+ * If you edit this, please comment what you have changed and re-upload it please.
+ * ----------------------------------GROUP6----------------------------------
+ */
+public class WORLD
+{
+	    int x_dim;
+	    int y_dim;
+	    private static ArrayList<ANT> antsInWorldArray = new ArrayList<ANT>();
+		
+	   
+		private ArrayList<HEX> hexArray = new ArrayList<HEX>();
+		private ArrayList<PLAYER> playerArray = new ArrayList<PLAYER>();
+		Random random = new Random();
+		
+		public main WORLD(int size, int teams)
+		{
+			x_dim = size;
+			y_dim = size;
+			fillHex(teams);
+			addPlayers();
+		}
+		
+		private void fillHex(int teams)
+		{
+			int x_randomNum = random.nextInt(x_dim);
+			int y_randomNum = random.nextInt(y_dim);
+			boolean food = false;
+			boolean ant = false;
+			boolean scent = false;
+			boolean ghost = false;
+			int hive = 0;
+			int limit = teams;
+			boolean rock = false;
+			int xpos;
+			int ypos;
+			for(int y = 0; y < y_dim; y++)
+			{
+				for (int x = 0; x < x_dim; x++)
+				{
+					if(x_randomNum < x_dim/2 && y_randomNum < y_dim/2 && hive < limit && x_randomNum == x && y_randomNum == y)
+					{
+						hive = 0;
+						this.hexArray.add(new HEX(x, y, food, ant, scent, ghost, hive, rock));
+						x_randomNum = random.nextInt(x_dim);
+						y_randomNum = random.nextInt(y_dim);
+					}
+					
+					else if(x_randomNum > x_dim/2 && y_randomNum > y_dim/2 && hive < limit && x_randomNum == x && y_randomNum == y)
+					{
+						hive = 1;
+						this.hexArray.add(new HEX(x, y, food, ant, scent, ghost, hive, rock));
+						x_randomNum = random.nextInt(x_dim);
+						y_randomNum = random.nextInt(y_dim);
+					}
+					
+					else if(x_randomNum > x_dim/2 && y_randomNum < y_dim/2 && hive < limit && x_randomNum == x && y_randomNum == y)
+					{
+						hive = 2;
+						this.hexArray.add(new HEX(x, y, food, ant, scent, ghost, hive, rock));
+						x_randomNum = random.nextInt(x_dim);
+						y_randomNum = random.nextInt(y_dim);
+					}
+					
+					else if(x_randomNum < x_dim/2 && y_randomNum > y_dim/2 && hive < limit && x_randomNum == x && y_randomNum == y)
+					{
+						hive = 3;
+						this.hexArray.add(new HEX(x, y, food, ant, scent, ghost, hive, rock));
+						x_randomNum = random.nextInt(x_dim);
+						y_randomNum = random.nextInt(y_dim);
+					}
+				
+					xpos = x;
+					ypos = y;
+					this.hexArray.add(new HEX(xpos, ypos, food, ant, scent, ghost, hive, rock));
+					x_randomNum = random.nextInt(x_dim);
+					y_randomNum = random.nextInt(y_dim);
+			    
+				}
+				
+			}
+			
+
+		}
+		
+		public static ArrayList<ANT> getAntsInWorldArray() 
+		{
+			return antsInWorldArray;
+		}
+
+		public static void setAntsInWorldArray(ArrayList<ANT> antsInWorldArray) 
+		{
+			WORLD.antsInWorldArray = antsInWorldArray;
+		}
+		
+
+		public ArrayList<HEX> getHexArray() 
+		{
+			return hexArray;
+		}
+
+		public void setHexArray(ArrayList<HEX> hexArray) 
+		{
+			this.hexArray = hexArray;
+		}
+
+		public ArrayList<PLAYER> getPlayerArray() 
+		{
+			return playerArray;
+		}
+
+		public void setPlayerArray(ArrayList<PLAYER> playerArray) 
+		{
+			this.playerArray = playerArray;
+		}	
+		public void addPlayers()
+		{
+			
+		}
+
+		private void newWorld()
+		{
+			//passes on info to the GUI to launch the game. 
+		}
+		public static void takeAntFromHive(ANT ant, int i)
+		{
+				antsInWorldArray.add(i, ant);
+		}
+		public HEX getHex(int x, int y)
+		{
+			int wantedXpos = x;
+			int wantedYpos = y;
+			int currentYpos;
+			int currentXpos;
+			for(int i = 0; i < hexArray.size(); i++)
+			{
+				currentXpos = hexArray.get(i).xpos;
+				currentYpos = hexArray.get(i).ypos;
+				if (currentXpos == wantedXpos && currentYpos == wantedYpos)
+				{
+					return hexArray.get(i);
+				}
+				else
+				{
+					//throw error;
+				}
+			}
+			
+		}
+		public void endGame()
+		{
+			System.exit(0);
+		}
+				
+}
+
