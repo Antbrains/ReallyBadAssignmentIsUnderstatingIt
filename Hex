@@ -1,0 +1,116 @@
+package ANTGAME;
+/* ----------------------------------GROUP6---------------------------------- 
+ * Author M.K
+ * Tuesday 16th April 2013
+ * 
+ * This class creates the hex objects that will be used to make the grid. 
+ * 
+ * Its boolean values will determine if food, ants, rocks and hives will be placed...
+ *...there. Needs revising, I think I'm tired. I can't figure out how I thought...
+ *...this would work originally.
+ * 
+ * If you edit this, please comment what you have changed and re-upload it please.
+ * ----------------------------------GROUP6----------------------------------
+ */
+public class HEX {
+  int xpos;
+	int ypos;
+	boolean food;
+	boolean ant;
+	boolean scent;
+	boolean ghost;
+	int hive;
+	boolean rock;
+	ANT antOnMe;
+	
+	public HEX (int x_pos, int y_pos, boolean foodGiven, boolean antGiven, boolean scentGiven,
+			boolean ghostGiven, int hiveGiven, boolean rockGiven)
+	{
+		this.xpos = x_pos;
+		this.ypos = y_pos;
+		this.food = foodGiven;
+		this.ant = antGiven;
+		this.ghost = ghostGiven;
+		this.hive = hiveGiven;
+		this.rock = rockGiven;
+	}
+	
+	public boolean isFood() 
+	{
+		return food;
+	}
+
+	public void setFood(boolean food) 
+	{
+		this.food = food;
+	}
+
+	public boolean isAnt() 
+	{
+		return ant;
+	}
+
+	public void setAnt(boolean ant) 
+	{
+		this.ant = ant;
+	}
+
+	public boolean isScent() 
+	{
+		return scent;
+	}
+
+	public void setScent(boolean scent) 
+	{
+		this.scent = scent;
+	}
+
+	public boolean isGhost() 
+	{
+		return ghost;
+	}
+
+	public void setGhost(boolean ghost) 
+	{
+		this.ghost = ghost;
+	}
+
+	public int getHive() 
+	{
+		return hive;
+	}
+
+	public void setHive(int hive) 
+	{
+		this.hive = hive;
+	}
+
+	public boolean isRock() 
+	{
+		return rock;
+	}
+
+	public void setRock(boolean rock) 
+	{
+		this.rock = rock;
+	}
+
+	public ANT getAntOnMe() 
+	{
+		return antOnMe;
+	}
+
+	public void setAntOnMe(ANT antOnMe) 
+	{
+		this.antOnMe = antOnMe;
+	}
+
+	public int getxPos()
+	{
+		return this.xpos;
+	}
+	public int getyPos()
+	{
+		return this.ypos;
+	}
+}
