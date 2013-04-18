@@ -39,7 +39,7 @@ public class Hive
 	/*This method will be called by the GUI once the teams(1-4) hives are made, using a...
 	 * ...loop depending on the size of the teamCount variable.
 	 */
-	private Hive fillHive()
+	private void fillHive()
 	{
 		hiveLimit = 200;
 		for (int i = 0; i < hiveLimit; i++)
@@ -49,7 +49,6 @@ public class Hive
 			ant.yLoc = this.yLoc;
 			Hive.getAntsInHiveArray().add(i, ant);
 		}
-		return this;
 	}
 	
 	public static void acceptANT(Ant antGiven, int i, int foodGiven)
