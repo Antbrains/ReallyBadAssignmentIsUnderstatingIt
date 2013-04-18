@@ -1,5 +1,4 @@
 package ANTGAME;
-
 public enum Senses {
-  friend,foe,friendWithFood,foeWithFood,food,rock,marker,unMarker,home,forHome
+Friend, Foe, FriendWithFood, FoeWithFood, Food, Rock, Marker, UnMark, Home, FoeHome;
 }
