@@ -1,5 +1,5 @@
 package ANTGAME;
 
-public enum Directions {
+public enum Direction {
   here,ahead,leftAhead,rigthAhead
 }
