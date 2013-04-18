@@ -1,51 +1,282 @@
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+package ANTGAME;
+import java.util.ArrayList;
+/* ----------------------------------GROUP6---------------------------------- 
+ * Author M.K
+ * Monday 15th April 2013
+ * 
+ * This class creates an ant object. 
+ * 
+ * It contains methods that are called by the BRAIN, which carries out certain...
+ * ...actions depending on the state.
+ * 
+ * If you edit this, please comment what you have changed and re-upload it please.
+ * ----------------------------------GROUP6----------------------------------
+ */
+public class ANT 
+{
+	Direction dir;
 
-
-public class Ant {
-  
-	Set<map> foodFound = new HashSet<map>();
-	static Set<map> food = new HashSet<map>();
-	public int steps = 0;
-	private boolean nested;
-	private Object Ant;
-	public int state;
-	public int ID;
+	int antID;
+	int teamColour;
+	int steps;
+	int xLoc;
+	int yLoc;
+	boolean holdFood;
+	boolean antAlive;
+	boolean surrounded;
+	int currentState;
+	boolean ghost = true;
+	FOOD foodValue;
 	
+	public ANT (int passedId, int passedColour, int currentState)
+	{
+		this.antID = passedId;
+		this.teamColour = passedColour;
+		this.currentState = currentState;
+		this.xLoc = 0;
+		this.xLoc = 0;
+		this.ghost = true;
+		dir = Direction.Ahead;
+
+	}
+
+
+	public Direction getDir() 
+	{
+		return dir;
+	}
+
+
+	public void setDir(Direction dir) 
+	{
+		this.dir = dir;
+	}
+
+	public int getAntID() {
+		return antID;
+	}
+
+
+
+	public void setAntID(int antID) {
+		this.antID = antID;
+	}
+
+
+
+	public int getTeamColour() {
+		return teamColour;
+	}
+
+
+
+	public void setTeamColour(int teamColour) {
+		this.teamColour = teamColour;
+	}
+
+
+
+	public int getSteps() {
+		return steps;
+	}
+
+
+
+	public void setSteps(int steps) {
+		this.steps = steps;
+	}
+
+
+
+	public int getxLoc() {
+		return xLoc;
+	}
+
+
+
+	public void setxLoc(int xLoc) {
+		this.xLoc = xLoc;
+	}
+
+
+
+	public int getyLoc() {
+		return yLoc;
+	}
+
+
+
+	public void setyLoc(int yLoc) {
+		this.yLoc = yLoc;
+	}
+
+
+
+	public boolean isHoldFood() {
+		return holdFood;
+	}
+
+
+
+	public void setHoldFood(boolean holdFood) {
+		this.holdFood = holdFood;
+	}
+
+
+
+	public boolean isAntAlive() {
+		return antAlive;
+	}
+
+
+
+	public void setAntAlive(boolean antAlive) {
+		this.antAlive = antAlive;
+	}
+
+
+
+	public int getCurrentState() {
+		return currentState;
+	}
+
+
+
+	public void setCurrentState(int currentState) {
+		this.currentState = currentState;
+	}
+
+
+
+	public boolean isGhost() {
+		return ghost;
+	}
+
+
+
+	public void setGhost(boolean ghost) {
+		this.ghost = ghost;
+	}
+
+
+
+	public FOOD getFoodValue() {
+		return foodValue;
+	}
+
+
+
+	public void setFoodValue(FOOD foodValue) {
+		this.foodValue = foodValue;
+	}
+
+
+
+	public void setSurrounded(boolean surrounded) {
+		this.surrounded = surrounded;
+	}
+
+
+
+	private void move(int distance, Direction dir)
+	{
+		setGhost(false);
+		//moves ahead by distance
+	}
 	
-	public int getState() {
-		return state;
+	private void turn(Turn whatWay)
+	{
+		//if left, turn to face cell leftAhead etc.
 	}
-
-	public void setState(int state) {
-		this.state = state;
-	}
-
-	public int getID() {
-		return ID;
-	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
-
-	public void death(){
-		Ant = food();
-		foodFound.clear();
+	
+	private void findFood()
+	{
 
 	}
-
-	private Object food() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private void kill()
+	{
+		//if near enemy ant, check if surrounded is true, then pass ant id to death.ant
+		//change holdFood true
 	}
-
-
-	private static Set<map> getFood() {
-		// TODO Auto-generated method stub
-		return food;
+	
+	private void death()
+	{
+		ArrayList<ANT> new1 = WORLD.getAntsInWorldArray();
+		//int a = new1.size();
+		if(surrounded)
+		{
+			for (int i = 0; i< new1.size(); i++)
+			{
+				if (this.antID == new1.get(i).antID)
+				{
+					new1.remove(i);
+					setAntAlive(false);
+					WORLD.setAntsInWorldArray(new1);
+				}
+			}
+		}
+		//gets the specific ant from the ant array, and sets !antAlive 
+		//takes an int as the ant ID and kills said ant
 	}
-
+	
+	public static void mark(int givenScent)
+	{
+		//places a scent on the current cell
+		int scent = givenScent;
+		switch(scent)
+		{
+			case 1: //code to set scent down on this.xLoc and this.yLoc
+					break;
+			case 2: //code to set scent down on this.xLoc and this.yLoc
+				break;
+			case 3: //code to set scent down on this.xLoc and this.yLoc
+				break;
+			case 4: //code to set scent down on this.xLoc and this.yLoc
+				break;
+			case 5: //code to set scent down on this.xLoc and this.yLoc
+				break;
+			case 6: //code to set scent down on this.xLoc and this.yLoc
+				break;
+		}
+	}
+	
+	private static void unMark()
+	{
+		//removes scent marker
+	}
+	
+	private void random()
+	{
+		// no idea
+	}
+	
+	private void isSurrounded()
+	{
+		// checks surrounding cells for enemy ants
+	}
+	private void enterHive()
+	{
+		this.ghost = true;
+		//HIVE.takeFood(this.antID, this.foodValue.value);
+		HIVE.acceptANT(this, this.antID, this.foodValue.value);	
+	}
+	private void leaveHive()
+	{
+		this.ghost = false;
+	}
+	private int setPos(int xGiven, int yGiven)
+	{
+		
+		this.xLoc = xGiven;
+		this.yLoc = yGiven;
+	}
+	private int getxPos()
+	{
+		return xLoc;
+	}
+	private int getyPos()
+	{
+		return yLoc;
+	}
 }
-
