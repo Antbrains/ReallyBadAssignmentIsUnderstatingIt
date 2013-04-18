@@ -1,18 +1,14 @@
+package ANTGAME;
 
-public class Rock {
+public class ROCKS {
+	int xpos;
+	int ypos;
+	boolean ghost;
 
-  public boolean isRock;
-	
-	public boolean isRock() {
-		return isRock;
+	public ROCKS(int xpos, int ypos) {
+		this.xpos = xpos;
+		this.ypos = ypos;
+		ghost = false;
 	}
 
-	public void setRock(boolean isRock) {
-		this.isRock = isRock;
-	}
-
-	public Rock( boolean isRock){
-		this.isRock = isRock;
-	}
-	
 }
