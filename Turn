@@ -1,5 +1,5 @@
 package ANTGAME;
 
 public enum Turn {
-  left,right
+Left, Right;
 }
