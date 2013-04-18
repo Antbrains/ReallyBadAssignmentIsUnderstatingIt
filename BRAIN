@@ -7,7 +7,7 @@ public class BRAIN
 {
     int scentLimit = 6;
 	String[] scentArray = new String[scentLimit];
-	public brain(String brainName, String fileName, int team)
+	public BRAIN(String brainName, String fileName, int team)
 	{
 	  ArrayList<BRAIN> brainArray = new ArrayList<BRAIN>();
 	  brainArray.add(team, this);
