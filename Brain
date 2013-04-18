@@ -1,49 +1,63 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+package ANTGAME;
+import java.util.ArrayList;
 import java.io.FileReader;
-import java.io.IOException;
+import java.io.BufferedReader;
 
-public class Brain {
-//get the brain instructions from a text file
+public class BRAIN 
+{
+    int scentLimit = 6;
+	String[] scentArray = new String[scentLimit];
+	public brain(String brainName, String fileName, int team)
+	{
+	  ArrayList<BRAIN> brainArray = new ArrayList<BRAIN>();
+	  brainArray.add(team, this);
+	}
+	private void states()
+	{
+		
+	}
 
-    public Brain(String file) {
+	private void mark(String givenScent)
+	{
+		String scent = givenScent;
+		for (int i = 0; i < scentLimit; i++)
+		{
+			if (scent == scentArray[i])
+			{
+				ANT.mark(i);
+			}
+		}
+		states();
+	
+	}
 
-        // The name of the file to open.
-        //String fileName = "//smbhome.uscs.susx.ac.uk/al373/Desktop/Ant Map.txt";
+	private void unMark()
+	{
+		//ANT.unMark();
+	}
 
-      
-        // This will reference one line at a time
-        String line = null;
+	private void pickUp()
+	{
+	
+	}
 
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = new FileReader(file);
+	private void drop()
+	{
+	
+	}
 
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+	private void move()
+	{
+	
+	}
 
-            while((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-            }	
-
-            // Always close files.
-            bufferedReader.close();			
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                file + "'");				
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + file + "'");					
-            // Or we could just do this: 
-            // ex.printStackTrace();
-           
-        }
-       
-        	
-        }
-    }
-
+	private void flip()
+	{
+	
+	}
+	
+	private void turn(TURN whichWay)
+	{
+		
+	}
+}
