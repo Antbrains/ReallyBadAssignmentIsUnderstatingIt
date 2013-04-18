@@ -64,8 +64,10 @@ public class main
 					{
 						hive = 3;
 						this.hexArray.add(new HEX(x, y, food, ant, scent, ghost, hive, rock));
+						System.out.println("The Hive for team " + (hive+1)+ " has been created at x,y:"  +xpos +","+ypos +".");
 						x_randomNum = random.nextInt(x_dim);
 						y_randomNum = random.nextInt(y_dim);
+						
 					}
 				
 					xpos = x;
@@ -73,6 +75,7 @@ public class main
 					this.hexArray.add(new HEX(xpos, ypos, food, ant, scent, ghost, hive, rock));
 					x_randomNum = random.nextInt(x_dim);
 					y_randomNum = random.nextInt(y_dim);
+					System.out.println("A cell has been placed at x,y:" + xpos + "," +ypos".";
 			    
 				}
 				
