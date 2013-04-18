@@ -1,0 +1,6 @@
+package ANTGAME;
+
+public enum Scents {
+  
+One, Two, Three, Four, Five, Six;
+}
