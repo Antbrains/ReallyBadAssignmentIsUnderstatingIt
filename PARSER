@@ -1,0 +1,97 @@
+package ANTGAME;
+import java.util.ArrayList;
+public class PARSER {
+	
+	private Instructions instructions;
+	String input;
+	private Turn turn;
+	private Direction dir;
+	private int st1;
+	private int st2;
+	private Senses senses;
+	
+	public PARSER(String file)
+	{
+		String stateList = file;
+		st1 = -1;
+		st2 = -1;
+		senses = null;
+		dir = null;
+		turn = null;
+		instructions = null;
+		String chopped = stateList.split("\t")[0];
+		String[] stArray = chopped.split(" ");
+						
+	}
+	
+	
+	public Instructions getInstructions() 
+	{
+		return instructions;
+	}
+
+	public void setInstructions(Instructions instructions)
+	{
+		this.instructions = instructions;
+	}
+
+	public String getInput() 
+	{
+		return input;
+	}
+
+	public void setInput(String input)
+	{
+		this.input = input;
+	}
+
+	public Turn getTurn() 
+	{
+		return turn;
+	}
+
+	public void setTurn(Turn turn) 
+	{
+		this.turn = turn;
+	}
+
+	public Direction getDir() 
+	{
+		return dir;
+	}
+
+	public void setDir(Direction dir) 
+	{
+		this.dir = dir;
+	}
+
+	public int getSt1() 
+	{
+		return st1;
+	}
+
+	public void setSt1(int st1) 
+	{
+		this.st1 = st1;
+	}
+
+	public int getSt2()
+	{
+		return st2;
+	}
+
+	public void setSt2(int st2) 
+	{
+		this.st2 = st2;
+	}
+	
+	public Senses getSenses() 
+	{
+		return senses;
+	}
+
+
+	public void setSenses(Senses senses) {
+		this.senses = senses;
+	}
+}
